@@ -6,12 +6,12 @@ describe('Products', function(){
     $httpBackend.whenGET('api/amazony/products.json').respond(fakeResponse);
 
     var realResponse = {};
-    Poller.getAll('api/amazony/products.json', function(data){
+    Poller.getAll('api/amazony/products.json').then(function(data){
       realResponse = data;
     });
 
     $httpBackend.flush();
 
-    expect(realResponse).toEqual(fakeResponse);
+    expect(realResponse.list).toEqual(fakeResponse);
   }));
 });

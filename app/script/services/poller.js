@@ -1,9 +1,13 @@
 angular.module('Amazony')
-  .factory('Poller', function($http, $timeout){
+  .factory('Poller', function($http, $timeout, $q){
     return {
-      getAll: function(uri, successCallback){
-        var onSuccess = function(result){
-          successCallback(result);
+      getAll: function(uri){
+        var result = {list:[]};
+        var deferred = $q.defer();
+
+        var onSuccess = function(data){
+          result.list = data;
+          deferred.resolve(result);
           $timeout(poller, 3000);
         };
 
@@ -11,6 +15,7 @@ angular.module('Amazony')
           $http.get(uri).success(onSuccess);
         };
         poller();
+        return deferred.promise;
       }
     };
   });

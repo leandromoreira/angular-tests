@@ -9,19 +9,14 @@ describe('ProductCtrl', function(){
   }));
 
   it('keeps polling products through Poller service', function(){
-    var mockService = {getAll:function(uri, callback){
-      if (uri == 'api/amazony/products.json'){
-        callback("amazony");
-      }else if(uri == 'api/ebai/products.json'){
-        callback("ebai");
-      }
-    }};
+    var mockService = {getAll:function(uri){}};
+    spyOn(mockService,'getAll');
     controller('ProductCtrl', {
       $scope: scope,
       Poller: mockService
     });
 
-    expect(scope.productsAmazony).toBe("amazony");
-    expect(scope.productsEbai).toBe("ebai");
+    expect(mockService.getAll).toHaveBeenCalledWith('api/amazony/products.json');
+    expect(mockService.getAll).toHaveBeenCalledWith('api/ebai/products.json');
   });
 });
