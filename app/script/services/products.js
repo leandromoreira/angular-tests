@@ -8,7 +8,7 @@ angular.module('Amazony')
         };
 
         var poller = function() {
-          return $http.get('api/amazony/products.json').then(onSuccess);
+          $http.get('api/amazony/products.json').success(onSuccess);
         };
         poller();
       }
