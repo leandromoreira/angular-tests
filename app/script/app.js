@@ -2,14 +2,14 @@ var app = angular.module('Amazony', []);
 
 app.config(function($routeProvider){
     $routeProvider
-      .when('/products', {
-        templateUrl: 'script/views/products.html',
+      .when('/amazony', {
+        templateUrl: 'script/views/amazony.html',
         controller: 'ProductCtrl'
       })
-      .otherwise({redirectTo: '/products'});
+      .when('/ebai', {
+        templateUrl: 'script/views/ebai.html',
+        controller: 'ProductCtrl'
+      })
+      .otherwise({redirectTo: '/amazony'});
 });
 
-app.value('Config', {
-  httpOptions: {timeout: 5000},
-  pollingTimeout: 2000
-});

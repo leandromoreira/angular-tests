@@ -1,13 +1,13 @@
 describe('Products', function(){
   beforeEach(module('Amazony'));
 
-  it('fetches products through API', inject(function(Products, $httpBackend){
+  it('fetches products through API', inject(function(Poller, $httpBackend){
     var fakeResponse = {'key': 'value'};
     $httpBackend.whenGET('api/amazony/products.json').respond(fakeResponse);
 
     var realResponse = {};
-    Products.getAll(function(data){
-      realResponse = data.data;
+    Poller.getAll('api/amazony/products.json', function(data){
+      realResponse = data;
     });
 
     $httpBackend.flush();

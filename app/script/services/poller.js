@@ -1,14 +1,14 @@
 angular.module('Amazony')
-  .factory('Products', function($http, $timeout){
+  .factory('Poller', function($http, $timeout){
     return {
-      getAll: function(callback){
+      getAll: function(uri, successCallback){
         var onSuccess = function(result){
-          callback(result);
+          successCallback(result);
           $timeout(poller, 3000);
         };
 
         var poller = function() {
-          $http.get('api/amazony/products.json').success(onSuccess);
+          $http.get(uri).success(onSuccess);
         };
         poller();
       }

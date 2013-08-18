@@ -1,0 +1,12 @@
+[
+  {
+    "name": "BOOK OF EBAI-MUSIC",
+    "price": 34.55,
+    "tags": ["MUSIC", "GUITAR", "DRUM"]
+  },
+  {
+    "name": "BOOK OF EBAI-GAME",
+    "price": 34.55,
+    "tags": ["SONY", "NINTENDO", "MICROSOFT"]
+  }
+]

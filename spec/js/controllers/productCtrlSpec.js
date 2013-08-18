@@ -8,15 +8,20 @@ describe('ProductCtrl', function(){
     controller = $controller;
   }));
 
-  it('keeps polling products through Products service', function(){
-    var mockService = {getAll:function(callback){
-      callback(42);
+  it('keeps polling products through Poller service', function(){
+    var mockService = {getAll:function(uri, callback){
+      if (uri == 'api/amazony/products.json'){
+        callback("amazony");
+      }else if(uri == 'api/ebai/products.json'){
+        callback("ebai");
+      }
     }};
     controller('ProductCtrl', {
       $scope: scope,
-      Products: mockService
+      Poller: mockService
     });
 
-    expect(scope.products).toBe(42);
+    expect(scope.productsAmazony).toBe("amazony");
+    expect(scope.productsEbai).toBe("ebai");
   });
 });

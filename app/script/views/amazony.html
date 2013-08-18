@@ -1,0 +1,10 @@
+<div>
+  <div ng-repeat="product in productsAmazony">
+  <h5>{{product.name}}</h5>
+  <h6>Tags:</h6>
+  <ul>
+    <li ng-repeat="tag in product.tags">{{tag}}</li>
+  </ul>
+  <span>{{product.price}}</span>
+  <div>
+</div>

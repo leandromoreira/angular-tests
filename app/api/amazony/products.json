@@ -1,17 +1,12 @@
 [
   {
-    "name": "book of music",
+    "name": "book of amazon-music",
     "price": 34.55,
     "tags": ["music", "guitar"]
   },
   {
-    "name": "book of game",
+    "name": "book of amazon-game",
     "price": 34.55,
     "tags": ["sony", "nintendo", "microsoft"]
-  },
-  {
-    "name": "book of books",
-    "price": 34.55,
-    "tags": ["writing", "reading"]
   }
 ]
