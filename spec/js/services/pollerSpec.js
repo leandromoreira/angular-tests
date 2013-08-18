@@ -3,10 +3,10 @@ describe('Products', function(){
 
   it('fetches products through API', inject(function(Poller, $httpBackend){
     var fakeResponse = {'key': 'value'};
-    $httpBackend.whenGET('api/amazony/products.json').respond(fakeResponse);
+    $httpBackend.whenGET('any/request/this.myformat').respond(fakeResponse);
 
     var realResponse = {};
-    Poller.getAll('api/amazony/products.json').then(function(data){
+    Poller.getAll('any/request/this.myformat').then(function(data){
       realResponse = data;
     });
 
