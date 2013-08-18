@@ -1,8 +1,16 @@
 angular.module('Amazony')
-  .factory('Products', function($http){
+  .factory('Products', function($http, $timeout){
     return {
-      getAll: function(){
-        return $http.get('api/amazony/products.json');
+      getAll: function(callback){
+        var onSuccess = function(result){
+          callback(result);
+          $timeout(poller, 3000);
+        };
+
+        var poller = function() {
+          return $http.get('api/amazony/products.json').then(onSuccess);
+        };
+        poller();
       }
     };
-});
+  });

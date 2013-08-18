@@ -8,14 +8,15 @@ describe('ProductCtrl', function(){
     controller = $controller;
   }));
 
-  it('fetches products through Products service', function(){
-    var mockService = {getAll:function(){}};
-    spyOn(mockService, 'getAll');
+  it('keeps polling products through Products service', function(){
+    var mockService = {getAll:function(callback){
+      callback(42);
+    }};
     controller('ProductCtrl', {
       $scope: scope,
       Products: mockService
     });
 
-    expect(mockService.getAll).toHaveBeenCalled();
+    expect(scope.products).toBe(42);
   });
 });

@@ -1,4 +1,6 @@
 angular.module('Amazony')
   .controller('ProductCtrl', function($scope, Products){
-    $scope.products = Products.getAll();
+     Products.getAll(function(data){
+       $scope.products = data;
+     });
   });

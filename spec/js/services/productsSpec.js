@@ -6,7 +6,7 @@ describe('Products', function(){
     $httpBackend.whenGET('api/amazony/products.json').respond(fakeResponse);
 
     var realResponse = {};
-    Products.getAll().then(function(data){
+    Products.getAll(function(data){
       realResponse = data.data;
     });
 
