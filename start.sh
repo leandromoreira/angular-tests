@@ -1,1 +1,1 @@
-(cd app/ && python -m SimpleHTTPServer)
+(cd app && ../server.sh)
